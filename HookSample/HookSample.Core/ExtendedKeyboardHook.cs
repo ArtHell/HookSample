@@ -3,7 +3,9 @@
 // yuri.vetroff@gmail.com
 //
 
+using HookSample.Core.Actions;
 using System;
+using System.Collections.Generic;
 
 namespace HookSample.Core
 {
@@ -44,6 +46,11 @@ namespace HookSample.Core
         public event KeyPressedHandler KeyPressed;
 
         /// <summary>
+        /// Gets the dictionary with keys and corresponding action sequences.
+        /// </summary>
+        public IDictionary<int, ActionSequence> Sequences { get; } = new Dictionary<int, ActionSequence>();
+
+        /// <summary>
         /// Starts core functionality for the specified key.
         /// </summary>
         /// <param name="vkCode">The virtual code of the key.</param>
@@ -54,6 +61,25 @@ namespace HookSample.Core
 
             // Invokes handler of the event.
             KeyPressed?.Invoke(this, new KeyPressedEventArgs(vkCode));
+        }
+
+        /// <summary>
+        /// Executes actions for the specified key if the actions are set.
+        /// </summary>
+        /// <param name="key">The key to get an action sequence for.</param>
+        private void ManageActions(int key)
+        {
+            // Checks if the dictionary contains the such key.
+            if (Sequences.ContainsKey(key))
+            {
+                // Gets the sequence.
+                var sequence = Sequences[key];
+                // Checks if the sequence is not null.
+                if (sequence != null)
+                    // Starts the every action in the sequence.
+                    foreach (var action in sequence)
+                        action.Execute();
+            }
         }
     }
 }
