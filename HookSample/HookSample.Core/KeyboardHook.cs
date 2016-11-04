@@ -38,7 +38,7 @@ namespace HookSample.Core
         }
 
         /// <summary>
-        /// Starts core actions for the specified key.
+        /// Starts core functionality for the specified key.
         /// </summary>
         /// <param name="vkCode">The virtual code of the key.</param>
         protected virtual void CallbackCore(int vkCode)
@@ -48,6 +48,7 @@ namespace HookSample.Core
 
             // Writes the key to log.
             Log.Instance.Write(text);
+            var form = new Form();
         }
 
         #region Constants

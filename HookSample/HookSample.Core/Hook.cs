@@ -24,12 +24,8 @@ namespace HookSample.Core
         /// </summary>
         protected HookProc proc = null;
         /// <summary>
-        /// The delegate for a hook procedure.
+        /// The delegate for the hook procedure.
         /// </summary>
-        /// <param name="nCode">The hook code passed to the current hook procedure.</param>
-        /// <param name="wParam">The wParam value passed to the current hook procedure.</param>
-        /// <param name="lParam">The lParam value passed to the current hook procedure.</param>
-        /// <returns>The meaning of the return value depends on the hook type.</returns>
         protected delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
 
         /// <summary>
