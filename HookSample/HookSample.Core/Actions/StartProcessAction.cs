@@ -8,6 +8,9 @@ using System.Diagnostics;
 
 namespace HookSample.Core.Actions
 {
+    /// <summary>
+    /// Represents a hook action that starts a process.
+    /// </summary>
     public class StartProcessAction : ProcessAction
     {
         /// <summary>
