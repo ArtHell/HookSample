@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Actions\IHookAction.cs" />
+    <Compile Include="Actions\KillProcessAction.cs" />
     <Compile Include="Actions\ProcessAction.cs" />
     <Compile Include="Actions\StartProcessAction.cs" />
     <Compile Include="ExtendedKeyboardHook.cs" />
