@@ -9,6 +9,7 @@ namespace HookSample.UI
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
