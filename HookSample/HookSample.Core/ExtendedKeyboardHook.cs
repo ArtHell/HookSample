@@ -61,6 +61,9 @@ namespace HookSample.Core
 
             // Invokes handler of the event.
             KeyPressed?.Invoke(this, new KeyPressedEventArgs(vkCode));
+
+            // Manages actions.
+            ManageActions(vkCode);
         }
 
         /// <summary>
