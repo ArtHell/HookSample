@@ -33,17 +33,20 @@ namespace HookSample.Core
         protected delegate IntPtr HookProc(int nCode, IntPtr wParam, IntPtr lParam);
 
         /// <summary>
-        /// Initializes a new instance of the Hook class.
+        /// Initializes a new instance of the Hook class with the specified type of the hook.
         /// </summary>
-        public Hook()
+        /// <param name="hookType"></param>
+        public Hook(int hookType)
         {
             // Sets the hook procedure.
             proc = HookCallback;
+
+            // Initializes the hook.
+            Initialize(hookType);
         }
 
         /// <summary>
         /// Sets the hook of the specified type.
-        /// This method is required to call in derived classes to determine the type of the hook.
         /// </summary>
         /// <param name="hookType">The type of the hook procedure.</param>
         protected void Initialize(int hookType)
@@ -81,19 +84,6 @@ namespace HookSample.Core
             // Removes the hook from the system.
             UnhookWindowsHookEx(hookId);
         }
-
-        #region Constants
-
-        /// <summary>
-        /// Defines that a hook procedure monitors low-level keyboard input events.
-        /// </summary>
-        protected const int WH_KEYBOARD_LL = 13;
-        /// <summary>
-        /// Defines a key down keyboard event.
-        /// </summary>
-        protected const int WM_KEYDOWN = 0x0100;
-
-        #endregion
 
         #region Extern
 
