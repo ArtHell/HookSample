@@ -64,18 +64,5 @@ namespace HookSample.Core
             }
             catch { }
         }
-
-        /// <summary>
-        /// Writes the specified number to the log.
-        /// </summary>
-        /// <param name="number">The number to write.</param>
-        public void Write(int number)
-        {
-            // Converts the number to a string value (firstly getting the key assigned to it).
-            var text = ((Keys)number).ToString();
-
-            // Writes it as a usual text.
-            Write(text);
-        }
     }
 }

@@ -38,7 +38,7 @@ namespace HookSample.Core
 
         protected virtual void CallbackCore(int vkCode)
         {
-
+            
         }
 
         #region Constants
