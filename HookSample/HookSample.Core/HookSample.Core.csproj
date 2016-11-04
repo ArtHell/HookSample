@@ -41,15 +41,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\IHookAction.cs" />
+    <Compile Include="Actions\ProcessAction.cs" />
+    <Compile Include="Actions\StartProcessAction.cs" />
     <Compile Include="ExtendedKeyboardHook.cs" />
     <Compile Include="Hook.cs" />
     <Compile Include="KeyboardHook.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Actions\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
