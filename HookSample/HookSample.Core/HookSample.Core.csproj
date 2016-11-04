@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Actions\ActionCreator.cs" />
     <Compile Include="Actions\ActionSequence.cs" />
     <Compile Include="Actions\IHookAction.cs" />
     <Compile Include="Actions\KillProcessAction.cs" />
