@@ -48,7 +48,6 @@ namespace HookSample.Core
 
             // Writes the key to log.
             Log.Instance.Write(text);
-            var form = new Form();
         }
 
         #region Constants
