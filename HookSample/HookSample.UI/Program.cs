@@ -9,7 +9,7 @@ using System.Windows.Forms;
 
 namespace HookSample.UI
 {
-    class Program
+    internal class Program
     {
         static void Main(string[] args)
         {

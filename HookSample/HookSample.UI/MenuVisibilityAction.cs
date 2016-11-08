@@ -10,7 +10,7 @@ namespace HookSample.UI
     /// <summary>
     /// Represents a hook action that changes menu visibility.
     /// </summary>
-    public class MenuVisibilityAction : IHookAction
+    internal class MenuVisibilityAction : IHookAction
     {
         /// <summary>
         /// Executes the action.

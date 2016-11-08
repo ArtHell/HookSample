@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace HookSample.UI
 {
-    public class KeyboardHookConsoleUI : ConsoleUI
+    internal class KeyboardHookConsoleUI : ConsoleUI
     {
         private const int KEY_TO_RETURN = 27; // ESC
         private ExtendedKeyboardHook hook = null;

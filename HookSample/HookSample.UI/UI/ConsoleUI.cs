@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 
 namespace HookSample.UI
 {
-    public abstract class ConsoleUI
+    internal abstract class ConsoleUI
     {
         #region Extern
 
