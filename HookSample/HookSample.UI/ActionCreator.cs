@@ -3,12 +3,14 @@
 // yuri.vetroff@gmail.com
 //
 
-namespace HookSample.Core.Actions
+using HookSample.Core.Actions;
+
+namespace HookSample.UI
 {
     /// <summary>
-    /// Provides a creator of actions from text commands.
+    /// Provides a creator of actions from console text commands.
     /// </summary>
-    public static class ActionCreator
+    internal static class ActionCreator
     {
         /// <summary>
         /// Creates a new action from the specified text command.
@@ -38,6 +40,11 @@ namespace HookSample.Core.Actions
                 // Creates a new KillProcessAction.
                 case "kill":
                     action = new KillProcessAction(argument);
+                    break;
+
+                // Creates a new MenuVisibilityAction.
+                case "visibility":
+                    action = new MenuVisibilityAction();
                     break;
 
                 // Creates nothing.

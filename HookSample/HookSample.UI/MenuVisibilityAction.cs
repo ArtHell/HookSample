@@ -27,7 +27,7 @@ namespace HookSample.UI
         /// <returns>A string that represents the MenuVisibilityAction.</returns>
         public override string ToString()
         {
-            return "visibility" + base.ToString();
+            return "visibility";
         }
     }
 }
