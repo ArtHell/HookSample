@@ -1,4 +1,9 @@
-﻿using HookSample.Core;
+﻿//
+// Yuri Vetroff
+// yuri.vetroff@gmail.com
+//
+
+using HookSample.Core;
 using HookSample.Core.Actions;
 using System;
 using System.Linq;
@@ -6,6 +11,8 @@ using System.Windows.Forms;
 
 namespace HookSample.UI
 {
+    // This code is DRAFT.
+
     internal class KeyboardHookConsoleUI : ConsoleUI
     {
         private const int KEY_TO_RETURN = 27; // ESC

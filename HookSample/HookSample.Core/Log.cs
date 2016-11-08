@@ -5,10 +5,12 @@
 
 using System;
 using System.IO;
-using System.Windows.Forms;
 
 namespace HookSample.Core
 {
+    /// <summary>
+    /// Provides methods and properties for logging.
+    /// </summary>
     internal class Log
     {
         #region Singleton members
