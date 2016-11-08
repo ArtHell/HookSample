@@ -6,7 +6,7 @@
 using System;
 using System.Runtime.InteropServices;
 
-namespace SampleHook
+namespace HookSample.UI
 {
     public abstract class ConsoleUI
     {
