@@ -23,8 +23,8 @@ namespace HookSample.UI
 
         #endregion
 
-        protected bool isVisible = true;
-        private IntPtr Handle
+        public static bool IsVisible { get; protected set; } = true;
+        private static IntPtr Handle
         {
             get
             {
@@ -32,15 +32,22 @@ namespace HookSample.UI
             }
         }
 
-        public void Hide()
+        public static void ChangeVisibility()
+        {
+            if (IsVisible == true)
+                Hide();
+            else
+                Show();
+        }
+        public static void Hide()
         {
             ShowWindow(Handle, SW_HIDE);
-            isVisible = false;
+            IsVisible = false;
         }
-        public void Show()
+        public static void Show()
         {
             ShowWindow(Handle, SW_SHOW);
-            isVisible = true;
+            IsVisible = true;
         }
 
         protected int GetInput()
