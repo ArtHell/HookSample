@@ -34,6 +34,7 @@ namespace HookSample.Core
                 // Launches the core method.
                 CallbackCore(Marshal.ReadInt32(lParam));
 
+            // Calls base method.
             return base.HookCallback(nCode, wParam, lParam);
         }
 
