@@ -20,5 +20,14 @@ namespace HookSample.UI
             // Changes the visibility.
             ConsoleUI.ChangeVisibility();
         }
+
+        /// <summary>
+        /// Returns a string that represents the MenuVisibilityAction.
+        /// </summary>
+        /// <returns>A string that represents the MenuVisibilityAction.</returns>
+        public override string ToString()
+        {
+            return "visibility" + base.ToString();
+        }
     }
 }

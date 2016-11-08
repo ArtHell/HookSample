@@ -14,6 +14,7 @@ namespace HookSample.UI
         public KeyboardHookConsoleUI(ExtendedKeyboardHook hook)
         {
             this.hook = hook;
+            hook.Sequences.Add(KEY_TO_RETURN, new ActionSequence() { new MenuVisibilityAction() });
         }
 
         public void MainMenu()

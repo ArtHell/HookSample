@@ -3,9 +3,7 @@
 // yuri.vetroff@gmail.com
 //
 
-using HookSample.Core.Actions;
-
-namespace HookSample.UI
+namespace HookSample.Core.Actions
 {
     /// <summary>
     /// Provides a creator of actions from text commands.
