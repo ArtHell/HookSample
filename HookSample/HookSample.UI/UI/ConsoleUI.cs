@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 
 namespace HookSample.UI
 {
-    // This code is DRAFT.
+    // The cide of this class is DRAFT.
 
     internal abstract class ConsoleUI
     {

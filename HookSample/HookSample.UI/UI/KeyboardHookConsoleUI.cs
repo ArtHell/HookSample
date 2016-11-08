@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace HookSample.UI
 {
-    // This code is DRAFT.
+    // The cide of this class is DRAFT.
 
     internal class KeyboardHookConsoleUI : ConsoleUI
     {
