@@ -59,7 +59,7 @@ namespace HookSample.Core.Actions
             catch (Exception ex)
             {
                 // Writes the error in the log.
-                Log.Instance.Write("Process start error: " + processName + " - " + ex.Message);
+                Log.Instance.WriteAppLog("Process start error: " + processName + " - " + ex.Message);
             }
         }
 

@@ -19,10 +19,14 @@ namespace HookSample.Core
         /// The instance of the Log.
         /// </summary>
         private static Log instance = null;
+
         /// <summary>
         /// Initializes a new instance of the Log class.
         /// </summary>
-        private Log() { }
+        private Log()
+        {
+        }
+
         /// <summary>
         /// Gets the instance of the Log.
         /// </summary>
@@ -42,16 +46,45 @@ namespace HookSample.Core
 
         #endregion
 
+        private const string MouseFilename = "mouse_log.txt";
+
+        private const string KeyboardFilename = "keyboard_log.txt";
+
+        private const string AppFilename = "app_log.txt";
+
         /// <summary>
-        /// Gets or sets the path to the log file.
+        /// Writes the mouse log.
         /// </summary>
-        public string Filename { get; set; } = "log.txt";
+        /// <param name="text">The text.</param>
+        public void WriteMouseLog(string text)
+        {
+            Write(text, MouseFilename);
+        }
+
+        /// <summary>
+        /// Writes the keyboard log.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        public void WriteKeyboardLog(string text)
+        {
+            Write(text, KeyboardFilename);
+        }
+
+        /// <summary>
+        /// Writes the log.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        public void WriteAppLog(string text)
+        {
+            Write(text, AppFilename);
+        }
 
         /// <summary>
         /// Writes the the specified text to the log.
         /// </summary>
         /// <param name="text">The text to write.</param>
-        public void Write(string text)
+        /// <param name="filename">The filename.</param>
+        public void Write(string text, string filename)
         {
             // Gets the current time in hh.mm.ss format.
             var time = DateTime.Now.ToLongTimeString();
@@ -61,10 +94,12 @@ namespace HookSample.Core
             try
             {
                 // Creates a stream writer and writes the text.
-                using (var writer = new StreamWriter(Filename, true))
+                using (var writer = new StreamWriter(filename, true))
                     writer.WriteLine(text);
             }
-            catch { }
+            catch
+            {
+            }
         }
     }
 }

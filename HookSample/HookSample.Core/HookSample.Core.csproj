@@ -50,6 +50,7 @@
     <Compile Include="Hook.cs" />
     <Compile Include="KeyboardHook.cs" />
     <Compile Include="Log.cs" />
+    <Compile Include="MouseHook.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

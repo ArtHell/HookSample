@@ -16,12 +16,14 @@ namespace HookSample.UI
     internal class KeyboardHookConsoleUI : ConsoleUI
     {
         private const int KEY_TO_RETURN = 27; // ESC
-        private ExtendedKeyboardHook hook = null;
+        private ExtendedKeyboardHook keyboardHook = null;
+        private ExtendedMouseHook mouseHook = null;
 
-        public KeyboardHookConsoleUI(ExtendedKeyboardHook hook)
+        public KeyboardHookConsoleUI(ExtendedKeyboardHook keyboardHook, ExtendedMouseHook mouseHook)
         {
-            this.hook = hook;
-            hook.Sequences.Add(KEY_TO_RETURN, new ActionSequence() { new MenuVisibilityAction() });
+            this.keyboardHook = keyboardHook;
+            this.mouseHook = mouseHook;
+            this.keyboardHook.Sequences.Add(KEY_TO_RETURN, new ActionSequence() { new MenuVisibilityAction() });
         }
 
         public void MainMenu()
@@ -37,13 +39,14 @@ namespace HookSample.UI
 
             ListSequences();
 
-            PrintMenu("Add", "Delete", "Back");
+            PrintMenu("Add", "Delete", "Exit");
 
             switch (GetInput())
             {
                 case 1: AddSequence(); break;
                 case 2: DeleteSequence(); break;
-                case 3: MainMenu(); break;
+                case 3: Application.Exit(); break;
+                default: ManageSequences(); break;
             }
         }
 
@@ -73,8 +76,11 @@ namespace HookSample.UI
                 else
                     goto addAnotherActionLabel;
             }
-
-            hook.Sequences.Add(key, sequence);
+            if (!keyboardHook.Sequences.ContainsKey(key))
+            {
+                keyboardHook.Sequences.Add(key, sequence);
+                mouseHook.Sequences.Add(key, sequence);
+            }  
 
             ManageSequences();
         }
@@ -89,8 +95,9 @@ namespace HookSample.UI
 
             try
             {
-                var sequenceToRemove = hook.Sequences.ElementAt(input);
-                hook.Sequences.Remove(sequenceToRemove);
+                var sequenceToRemove = keyboardHook.Sequences.ElementAt(input);
+                keyboardHook.Sequences.Remove(sequenceToRemove);
+                mouseHook.Sequences.Remove(sequenceToRemove);
             }
             catch
             {
@@ -102,7 +109,7 @@ namespace HookSample.UI
         }
         private void ListSequences()
         {
-            if (hook.Sequences.Count == 0)
+            if (keyboardHook.Sequences.Count == 0)
             {
                 Console.WriteLine("No sequences found.");
                 Console.WriteLine();
@@ -110,7 +117,7 @@ namespace HookSample.UI
             else
             {
                 var counter = 0;
-                foreach (var sequence in hook.Sequences)
+                foreach (var sequence in keyboardHook.Sequences)
                 {
                     Console.WriteLine("Index: " + counter.ToString());
                     Console.WriteLine("Key: " + sequence.Key.ToString());

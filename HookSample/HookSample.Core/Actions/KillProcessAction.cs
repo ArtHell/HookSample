@@ -36,7 +36,7 @@ namespace HookSample.Core.Actions
 
                 // Checks if the list is empty and writes to log the corresponding error message.
                 if (processes.Length == 0)
-                    Log.Instance.Write("Process kill error: no processes found for " + processName);
+                    Log.Instance.WriteAppLog("Process kill error: no processes found for " + processName);
                 // Otherwise, kills the every process in the list.
                 else
                     Array.ForEach(processes, p => p.Kill());
@@ -44,7 +44,7 @@ namespace HookSample.Core.Actions
             catch (Exception ex)
             {
                 // Writes the error in the log.
-                Log.Instance.Write("Process kill error: " + processName + " - " + ex.Message);
+                Log.Instance.WriteAppLog("Process kill error: " + processName + " - " + ex.Message);
             }
         }
 

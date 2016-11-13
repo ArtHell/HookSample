@@ -1,24 +1,14 @@
-﻿//
-// Yuri Vetroff
-// yuri.vetroff@gmail.com
-//
-
-using System;
-using System.Runtime.InteropServices;
-using System.Windows.Forms;
+﻿using System;
 
 namespace HookSample.Core
 {
-    /// <summary>
-    /// Represents a keyboard hook.
-    /// </summary>
-    public class KeyboardHook : Hook
+    public class MouseHook : Hook
     {
         /// <summary>
         /// Initialize a new instance of the KeyboardHook class.
         /// </summary>
-        public KeyboardHook()
-            : base(WH_KEYBOARD_LL)
+        public MouseHook()
+            : base(WH_MOUSE_LL)
         { }
 
         /// <summary>
@@ -30,9 +20,9 @@ namespace HookSample.Core
         protected override IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
             // Checks if the hook is correct and a keypressed event is happened.
-            if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
+            if (nCode >= 0 && wParam == (IntPtr)WM_LBUTTONDOWN || wParam == (IntPtr)WM_RBUTTONDOWN)
                 // Launches the core method.
-                CallbackCore(Marshal.ReadInt32(lParam));
+                CallbackCore((long)wParam);
 
             // Calls base method.
             return base.HookCallback(nCode, wParam, lParam);
@@ -41,26 +31,36 @@ namespace HookSample.Core
         /// <summary>
         /// Starts core functionality for the specified key.
         /// </summary>
-        /// <param name="vkCode">The virtual code of the key.</param>
-        protected virtual void CallbackCore(int vkCode)
+        /// <param name="type">The type.</param>
+        protected virtual void CallbackCore(long type)
         {
-            // Converts the code to a string value (firstly getting the key assigned to it).
-            var text = ((Keys)vkCode).ToString();
+            var text = "";
+            switch (type)
+            {
+                case WM_LBUTTONDOWN: text = "Left mouse button"; break;
+                case WM_RBUTTONDOWN: text = "Right mouse button"; break;
+            }
 
             // Writes the key to log.
-            Log.Instance.WriteKeyboardLog(text);
+            Log.Instance.WriteMouseLog(text);
         }
 
         #region Constants
 
         /// <summary>
-        /// Defines that a hook procedure monitors low-level keyboard input events.
+        /// Defines that a hook procedure monitors low-level mouse input events.
         /// </summary>
-        protected const int WH_KEYBOARD_LL = 13;
+        protected const int WH_MOUSE_LL = 14;
+
         /// <summary>
-        /// Defines a key down keyboard event.
+        /// Defines a left button event.
         /// </summary>
-        protected const int WM_KEYDOWN = 0x0100;
+        protected const long WM_LBUTTONDOWN = 0x0201;
+
+        /// <summary>
+        /// Defines a right button event.
+        /// </summary>
+        protected const long WM_RBUTTONDOWN = 0x0204;
 
         #endregion
     }

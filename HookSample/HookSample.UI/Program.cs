@@ -13,22 +13,25 @@ namespace HookSample.UI
     {
         static void Main(string[] args)
         {
-            // Creates an instance of the hook (with using statement because it's IDisposable).
-            using (var hook = new ExtendedKeyboardHook())
+            using (var keyboardHook = new ExtendedKeyboardHook())
             {
-                // Creates a task for parallel console UI work.
-                var task = new Task(() =>
+                // Creates an instance of the hook (with using statement because it's IDisposable).
+                using (var mouseHook = new ExtendedMouseHook())
                 {
-                    // Creates an instance of the UI.
-                    var ui = new KeyboardHookConsoleUI(hook);
-                    // Starts the UI.
-                    ui.MainMenu();
-                });
-                // Starts the task.
-                task.Start();
+                    // Creates a task for parallel console UI work.
+                    var task = new Task(() =>
+                    {
+                        // Creates an instance of the UI.
+                        var ui = new KeyboardHookConsoleUI(keyboardHook, mouseHook);
+                        // Starts the UI.
+                        ui.MainMenu();
+                    });
+                    // Starts the task.
+                    task.Start();
 
-                // Runs a message loop on the current thread.
-                Application.Run();
+                    // Runs a message loop on the current thread.
+                    Application.Run();
+                }
             }
         }
     }
