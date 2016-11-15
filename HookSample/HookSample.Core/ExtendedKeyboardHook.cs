@@ -15,11 +15,6 @@ namespace HookSample.Core
     public class ExtendedKeyboardHook : KeyboardHook
     {
         /// <summary>
-        /// Gets the dictionary with keys and corresponding action sequences.
-        /// </summary>
-        public IDictionary<int, ActionSequence> Sequences { get; } = new Dictionary<int, ActionSequence>();
-
-        /// <summary>
         /// Starts core functionality for the specified key.
         /// </summary>
         /// <param name="vkCode">The virtual code of the key.</param>

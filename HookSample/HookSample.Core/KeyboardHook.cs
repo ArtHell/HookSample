@@ -3,7 +3,9 @@
 // yuri.vetroff@gmail.com
 //
 
+using HookSample.Core.Actions;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -14,6 +16,11 @@ namespace HookSample.Core
     /// </summary>
     public class KeyboardHook : Hook
     {
+        /// <summary>
+        /// Gets the dictionary with keys and corresponding action sequences.
+        /// </summary>
+        public IDictionary<int, ActionSequence> Sequences { get; } = new Dictionary<int, ActionSequence>();
+
         /// <summary>
         /// Initialize a new instance of the KeyboardHook class.
         /// </summary>
@@ -29,9 +36,8 @@ namespace HookSample.Core
         /// <param name="lParam">The lParam value passed to the current hook procedure.</param>
         protected override IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
-            if (this.hideKey)
+            if (HideKey(Marshal.ReadInt32(lParam)))
             {
-                this.hideKey = false;
                 return (IntPtr)1;
             }
             // Checks if the hook is correct and a keypressed event is happened.
@@ -41,6 +47,21 @@ namespace HookSample.Core
 
             // Calls base method.
             return base.HookCallback(nCode, wParam, lParam);
+        }
+
+        private bool HideKey(int key)
+        {
+            if (Sequences.ContainsKey(key))
+            {
+                // Gets the sequence.
+                var sequence = Sequences[key];
+                // Checks if the sequence is not null.
+                if (sequence != null)
+                {
+                    return sequence.Exists(x => x.ToString() == "hide");
+                }
+            }
+            return false;
         }
 
         /// <summary>
