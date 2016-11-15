@@ -63,7 +63,7 @@ namespace HookSample.UI
                 Console.WriteLine("Input an action: ");
 
                 var phrase = Console.ReadLine();
-                var action = ActionCreator.Create(phrase);
+                var action = ActionCreator.Create(phrase, keyboardHook);
                 sequence.Add(action);
 
             addAnotherActionLabel:

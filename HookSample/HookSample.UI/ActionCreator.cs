@@ -3,6 +3,7 @@
 // yuri.vetroff@gmail.com
 //
 
+using HookSample.Core;
 using HookSample.Core.Actions;
 
 namespace HookSample.UI
@@ -17,7 +18,7 @@ namespace HookSample.UI
         /// </summary>
         /// <param name="command">The command to create the action from.</param>
         /// <returns>The new action.</returns>
-        public static IHookAction Create(string command)
+        public static IHookAction Create(string command, Hook hook)
         {
             // Creates an empty action.
             IHookAction action = null;
@@ -45,6 +46,14 @@ namespace HookSample.UI
                 // Creates a new MenuVisibilityAction.
                 case "visibility":
                     action = new MenuVisibilityAction();
+                    break;
+
+                case "hide":
+                    action = new KeyHideAction(hook);
+                    break;
+
+                case "print":
+                    action = new KeyPressAction(argument);
                     break;
 
                 // Creates nothing.

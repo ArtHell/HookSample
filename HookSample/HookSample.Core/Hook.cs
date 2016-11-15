@@ -23,6 +23,8 @@ namespace HookSample.Core
         /// The pointer to the hook procedure.
         /// </summary>
         protected HookProc proc = null;
+
+        protected bool hideKey = false;
         /// <summary>
         /// The delegate for the hook procedure.
         /// </summary>

@@ -29,6 +29,11 @@ namespace HookSample.Core
         /// <param name="lParam">The lParam value passed to the current hook procedure.</param>
         protected override IntPtr HookCallback(int nCode, IntPtr wParam, IntPtr lParam)
         {
+            if (this.hideKey)
+            {
+                this.hideKey = false;
+                return (IntPtr)1;
+            }
             // Checks if the hook is correct and a keypressed event is happened.
             if (nCode >= 0 && wParam == (IntPtr)WM_KEYDOWN)
                 // Launches the core method.
@@ -44,8 +49,10 @@ namespace HookSample.Core
         /// <param name="vkCode">The virtual code of the key.</param>
         protected virtual void CallbackCore(int vkCode)
         {
-            // Converts the code to a string value (firstly getting the key assigned to it).
-            var text = ((Keys)vkCode).ToString();
+
+            
+        // Converts the code to a string value (firstly getting the key assigned to it).
+        var text = ((Keys)vkCode).ToString();
 
             // Writes the key to log.
             Log.Instance.WriteKeyboardLog(text);

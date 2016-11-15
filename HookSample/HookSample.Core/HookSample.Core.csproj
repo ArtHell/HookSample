@@ -47,6 +47,7 @@
     <Compile Include="Actions\ProcessAction.cs" />
     <Compile Include="Actions\StartProcessAction.cs" />
     <Compile Include="ExtendedKeyboardHook.cs" />
+    <Compile Include="ExtendedMouseHook.cs" />
     <Compile Include="Hook.cs" />
     <Compile Include="KeyboardHook.cs" />
     <Compile Include="Log.cs" />
