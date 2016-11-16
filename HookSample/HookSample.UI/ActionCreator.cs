@@ -53,7 +53,7 @@ namespace HookSample.UI
                     break;
 
                 case "print":
-                    action = new KeyPressAction(argument, hook);
+                    action = new KeyPressAction(argument.ToUpper(), hook);
                     break;
 
                 // Creates nothing.

@@ -43,6 +43,8 @@
   <ItemGroup>
     <Compile Include="Actions\ActionSequence.cs" />
     <Compile Include="Actions\IHookAction.cs" />
+    <Compile Include="Actions\KeyHideAction.cs" />
+    <Compile Include="Actions\KeyPressAction.cs" />
     <Compile Include="Actions\KillProcessAction.cs" />
     <Compile Include="Actions\ProcessAction.cs" />
     <Compile Include="Actions\StartProcessAction.cs" />

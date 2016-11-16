@@ -23,7 +23,7 @@ namespace HookSample.UI
         {
             this.keyboardHook = keyboardHook;
             this.mouseHook = mouseHook;
-            this.keyboardHook.Sequences.Add(KEY_TO_RETURN, new ActionSequence() { new MenuVisibilityAction() });
+            this.keyboardHook.Sequences.Add((char)KEY_TO_RETURN, new ActionSequence() { new MenuVisibilityAction() });
         }
 
         public void MainMenu()
@@ -55,7 +55,7 @@ namespace HookSample.UI
             Layout();
 
             Console.WriteLine("Input an event key for the sequence: ");
-            var key = GetInput();
+            var key = Console.ReadLine().ToUpper()[0];
             var sequence = new ActionSequence();
 
             while (true)

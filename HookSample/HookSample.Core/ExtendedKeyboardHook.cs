@@ -24,14 +24,14 @@ namespace HookSample.Core
             base.CallbackCore(vkCode);
 
             // Manages actions.
-            ManageActions(vkCode);
+            ManageActions((char)vkCode);
         }
 
         /// <summary>
         /// Executes actions for the specified key if the actions are set.
         /// </summary>
         /// <param name="key">The key to get an action sequence for.</param>
-        private void ManageActions(int key)
+        private void ManageActions(char key)
         {
             // Checks if the dictionary contains the such key.
             if (Sequences.ContainsKey(key))

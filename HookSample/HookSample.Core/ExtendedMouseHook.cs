@@ -8,7 +8,7 @@ namespace HookSample.Core
         /// <summary>
         /// Gets the dictionary with keys and corresponding action sequences.
         /// </summary>
-        public IDictionary<int, ActionSequence> Sequences { get; } = new Dictionary<int, ActionSequence>();
+        public IDictionary<char, ActionSequence> Sequences { get; } = new Dictionary<char, ActionSequence>();
 
         /// <summary>
         /// Starts core functionality for the specified key.
@@ -29,10 +29,10 @@ namespace HookSample.Core
         /// <param name="key">The key to get an action sequence for.</param>
         private void ManageActions(long key)
         {
-            if (Sequences.ContainsKey(253) && key == WM_LBUTTONDOWN)
+            if (Sequences.ContainsKey((char)253) && key == WM_LBUTTONDOWN)
             {
                 // Gets the sequence.
-                var sequence = Sequences[253];
+                var sequence = Sequences[(char)253];
                 // Checks if the sequence is not null.
                 if (sequence != null)
                     // Starts the every action in the sequence.
@@ -40,10 +40,10 @@ namespace HookSample.Core
                         action.Execute();
             }
 
-            if (Sequences.ContainsKey(251) && key == WM_RBUTTONDOWN)
+            if (Sequences.ContainsKey((char)251) && key == WM_RBUTTONDOWN)
             {
                 // Gets the sequence.
-                var sequence = Sequences[251];
+                var sequence = Sequences[(char)251];
                 // Checks if the sequence is not null.
                 if (sequence != null)
                     // Starts the every action in the sequence.
